@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drowsiness Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>DRIVER <br><span>DROWSINESS</span> <br><span class="highlight">DETECTOR</span></h1>
+    <section class="description">
+  <h2>How This Driver Drowsiness Detection System Works</h2>
+  <p>This real-time <strong>Driver Drowsiness and Yawning Detection</strong> system uses your webcam to monitor facial features and detect signs of fatigue or sleepiness while driving. Here's how it works step-by-step:</p>
+  <ol>
+    <li><strong>Face Mesh Detection:</strong> The system uses <em>MediaPipe's Face Mesh</em> model to locate key facial landmarks such as eyes and mouth.</li>
+    <li><strong>Eye Aspect Ratio (EAR):</strong> By analyzing specific points around both eyes, it calculates the EAR—a measure that reflects how open or closed the eyes are.
+      <ul>
+        <li>When the EAR drops below a certain threshold consistently, the system detects drowsiness or closed eyes.</li>
+        <li>Prolonged low EAR values trigger warnings like <em>"DROWSY!"</em> or <em>"SLEEPY"</em> on the screen.</li>
+      </ul>
+    </li>
+    <li><strong>Mouth Aspect Ratio (MAR):</strong> Similarly, it calculates the MAR using mouth landmarks to detect yawning.
+      <ul>
+        <li>If the MAR exceeds a threshold for several frames, it triggers a <em>"YAWNING!"</em> alert.</li>
+      </ul>
+    </li>
+    <li><strong>Real-Time Feedback:</strong> The video feed displays your webcam stream with visual markers on your eyes and mouth landmarks, along with EAR and MAR values and real-time alerts. This helps you stay aware of your level of alertness.</li>
+    <li><strong>Controls:</strong> Use the <strong>START</strong> button to activate the detection and webcam feed. Use the <strong>STOP</strong> button to pause detection and release the camera.</li>
+  </ol>
+  <h3>Benefits of This System</h3>
+  <ul>
+    <li>Helps drivers stay alert by detecting early signs of drowsiness.</li>
+    <li>Provides instant visual alerts to prevent potential accidents.</li>
+    <li>Easy to use via a simple web interface with start/stop controls.</li>
+  </ul>
+</section>
+
+    <div class="video-frame" id="video-container" style="display: none;">
+        <img id="video" />
+    </div>
+
+    <div class="buttons">
+        <button onclick="startDetection()">START</button>
+        <button onclick="stopDetection()">STOP</button>
+    </div>
+
+    <div class="footer">
+        <i class="icon">🏠</i>
+        <i class="icon">👤</i>
+        <i class="icon">⚙️</i>
+        <i class="icon">📧</i>
+        <i class="icon">ℹ️</i>
+    </div>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
