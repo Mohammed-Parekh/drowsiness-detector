@@ -1,0 +1,120 @@
+body {
+    background: #0e0e1f;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #0ff;
+    font-size: 2.5em;
+}
+h1 span {
+    color: #88f;
+}
+h1 .highlight {
+    color: #f0f;
+}
+
+.video-frame img {
+    width: 600px;
+    border: 4px solid #0ff;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.buttons button {
+    padding: 10px 30px;
+    margin: 10px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #00ffff, #ff00ff);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buttons button:hover {
+    transform: scale(1.05);
+    background: #fff;
+    color: #000;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+.footer .icon {
+    font-size: 1.5em;
+    background: #1a1a2e;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.footer .icon:hover {
+    background: #0ff;
+    color: #000;
+}
+/* Description Section Styling */
+.description {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    padding: 20px 30px;
+    background: #121229;
+    border: 2px solid #0ff;
+    border-radius: 12px;
+    color: #ccc;
+    font-family: 'Orbitron', sans-serif;
+    text-align: left;
+    box-shadow: 0 0 15px #0ff88f55;
+}
+
+.description h2 {
+    color: #0ff;
+    font-size: 2em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.description h3 {
+    color: #f0f;
+    margin-top: 25px;
+    font-size: 1.5em;
+}
+
+.description p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #bbb;
+}
+
+.description ol, .description ul {
+    margin-left: 20px;
+    color: #aaa;
+}
+
+.description ol li, .description ul li {
+    margin-bottom: 12px;
+    font-size: 1em;
+}
+
+.description ol li ul li {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    color: #999;
+}
+
+/* Optional: subtle glow on links or strong text */
+.description strong, .description em {
+    color: #0ff;
+    font-weight: 700;
+}
+
+.description em {
+    font-style: normal;
+    color: #f0f;
+}
