@@ -37,11 +37,29 @@
     <div class="video-frame" id="video-container" style="display: none;">
         <img id="video" />
     </div>
+        <h2 class="section-title">Live Webcam Detection</h2>
+
 
     <div class="buttons">
-        <button onclick="startDetection()">START</button>
-        <button onclick="stopDetection()">STOP</button>
+        <button onclick="startDetection()">START LIVE</button>
+        <button onclick="stopDetection()">STOP LIVE</button>
     </div>
+        <h2 class="section-title">Video File Detection</h2>
+
+    <div class="upload-container">
+    <label class="custom-file-upload">
+        <input type="file" id="videoFile" accept="video/*">
+        Choose Video File
+    </label>
+    <button class="gradient-button" onclick="uploadVideo()">Upload Video</button>
+</div>
+
+<div class="video-file-controls">
+    <button class="gradient-button" onclick="startVideo()">Start Video Detection</button>
+    <button class="gradient-button" onclick="stopVideo()">Stop Video Detection</button>
+</div>
+
+
 
     <div class="footer">
         <i class="icon">🏠</i>
@@ -50,8 +68,60 @@
         <i class="icon">📧</i>
         <i class="icon">ℹ️</i>
     </div>
+    <audio id="alertSound" src="/static/alert.wav" preload="auto"></audio>
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+let videoFeedRunning = false;
+let uploadedVideoUrl = "";  // 🆕 Stores uploaded video feed endpoint
+
+function uploadVideo() {
+    const fileInput = document.getElementById('videoFile');
+    const file = fileInput.files[0];
+    if (!file) {
+        alert("Please select a video file.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("video", file);
+
+    fetch("/upload", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "uploaded") {
+            uploadedVideoUrl = data.url;  // ✅ Save for later
+            alert("Video uploaded successfully! Click 'Start Video Detection' to begin.");
+        } else {
+            alert("Upload failed: " + data.message);
+        }
+    });
+}
+
+function startVideo() {
+    if (videoFeedRunning || uploadedVideoUrl === "") {
+        alert("No uploaded video found. Please upload one first.");
+        return;
+    }
+
+    document.getElementById('video').src = uploadedVideoUrl;
+    document.getElementById('video-container').style.display = "block";
+    videoFeedRunning = true;
+}
+
+function stopVideo() {
+    if (!videoFeedRunning) return;
+
+    document.getElementById('video').src = "";
+    document.getElementById('video-container').style.display = "none";
+    videoFeedRunning = false;
+}
+</script>
+
+
+
 </body>
 </html>
