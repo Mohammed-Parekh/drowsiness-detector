@@ -36,9 +36,8 @@ h1 .highlight {
 }
 
 .buttons button:hover {
-    transform: scale(1.05);
-    background: #fff;
-    color: #000;
+   transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
 }
 
 .footer {
@@ -117,4 +116,66 @@ h1 .highlight {
 .description em {
     font-style: normal;
     color: #f0f;
+}
+/* Gradient buttons like START/STOP */
+.gradient-button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #00f0ff, #ff00f2);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    gap: 10px;
+}
+
+.gradient-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+}
+
+/* Upload container layout */
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* Custom file input */
+.custom-file-upload {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #00f0ff, #ff00f2);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    gap: 10px;
+}
+
+.custom-file-upload:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* Hide default input */
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+.section-title {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #00f0ff, #ff00f2);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
